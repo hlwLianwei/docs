@@ -1,0 +1,37 @@
+安装,以下操作均在mac终端输入命令。
+01,检查Mac是否安装了rvm:rvm -v
+02,安装rvm:curl -L get.rvm.io | bash -s stable
+03,指定源:source ~/.rvm/scripts/rvm
+04,查看版本确认是否安装成功:rvm -v
+05,列出所有指定源里的ruby版本:rvm list known
+06,用rvm安装ruby环境(版本号由rvm list known命令查询出):rvm install 2.6.0
+07,安装完成之后输入指令查看ruby版本，看看是否安装成功:rvm list
+08,查看RubyGems的版本用指令:gem -v
+09,更新RubyGems的版本指令:gem update --system
+10,检查ruby源:gem sources -l
+11,移除ruby源:gem sources --remove https://rubygems.org/
+12,添加国内的ruby-china源(因为taobao源已经停止维护所以用ruby-china源):gem sources --add https://gems.ruby-china.com
+   (https://gems.ruby-china.org源由于org限制，改成com)
+13,安装cocoapods(需要输入mac电脑密码)：
+   注意：
+　　OS X 10.11之前系统的安装cocoapods 指令:sudo gem install cocoapods
+　　OS X 10.11以后系统的安装cocoapods 指令:sudo gem install -n /usr/local/bin cocoa pods
+   如果有 gems installed标志着安装成功了。
+14,输入pod命令出现bash: pod: command not found的解决,输出以下两条指令：
+   sudo gem install -n /usr/local/bin cocoapods /
+   sudo chmod +rx /usr/local/bin
+
+
+集成, cocoapods集成第三方框架到项目工程里面去,以下操作均在mac终端输入命令。
+01,先去xcode中创建一个项目
+02,打开终端，输入 cd 项目路径(项目路径可以通过拖拽方式，拖拽到终端)
+03,输入指令vim podfile创建podfile文件，然后按i进入到编辑模式
+   在编辑模式中，输入
+　　 platform:ios,'12.0'
+　　 target '你的工程名' do
+　　 pod 'AFNetworking', '~>3.1.0' (如果不加 , '~>3.1.0' 则它会下载最新的版本)
+　　 end
+   配置好要集成的第三方库，按键盘的esc,接着按 ：然后输入wq 按回车键
+   最后输入指令pod update --verbose --no-repo-update  或者   pod install --verbose --no-repo-update
+04,集成cocoapods后的项目，用xcode打开xxx.xcworkspace这个文件来打开项目。
+

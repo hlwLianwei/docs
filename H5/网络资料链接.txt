@@ -1,0 +1,5 @@
+AppStore提交审核发布网址
+https://appstoreconnect.apple.com/
+
+App开发者网址
+https://developer.apple.com/
