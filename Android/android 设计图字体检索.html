@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf8" />
+    <style>
+        p {
+            margin: 0 auto
+        }
+        /* 设置p上下距离为0，左右自动 */
+    </style>
+</head>
+
+<body>
+    <h3>Android的设计图为1080x1920，屏幕dpi为480，3倍缩放率(xxhdpi), 不存在于下表时可粗略计算(单位dp): 字体 = 字高 * 比例</h3>
+    <div id="map_values" style="font-size:16px;color:black;font-weight:normal;">
+        字高:<input type="text" id="fontHeight" value="" style="width:100px;" />
+        <label><input type="checkbox" id="chbHeight" checked/>单位dp</label>&nbsp;&nbsp;
+        <input type="button" value="&nbsp;查找&nbsp;" onclick="findFont()" />
+    </div>
+    <label id="fontSize" style="color:blue;">检索到字体:</label>
+</body>
+
+</html>
+
+<script>
+    String.prototype.padLeft =
+        Number.prototype.padLeft = function (total, pad) {
+            return (Array(total).join(pad || 0) + this).slice(-total);
+        }
+    function format(value, len) {
+        var strText = value.toFixed(2).padLeft(len, "0");
+        return strText;
+    }
+    function getHeight(tfont) {
+        var len = 2;
+        var intHeight = ("" + tfont.heightPx).padLeft(2, "0");
+        var strText = "字高:" + intHeight + "px, " + format(tfont.height, 5) + "dp";
+        return strText;
+    }
+    function getCn(tfont) {
+        var strScale = format(tfont.cnFt / tfont.height, 4);
+        var strText = "中文字体dp(" + format(tfont.cnFt, 5) + ", 比例:" + strScale + ", 行高:" + format(tfont.cnLine, 5) + ", 左:" + format(tfont.cnLeft, 5) + ", 上:" + format(tfont.cnTop, 5) + ", 下:" + format(tfont.cnBottom, 5) + ")";
+        return strText;
+    }
+    function getEn(tfont) {
+        var strScale = format(tfont.enFt / tfont.height, 4);
+        var strText = "英文字体dp(" + format(tfont.enFt, 5) + ", 比例:" + strScale + ", 行高:" + format(tfont.enLine, 5) + ", 左:" + format(tfont.enLeft, 5) + ", 上:" + format(tfont.enTop, 5) + ", 下:" + format(tfont.enBottom, 5) + ")";
+        return strText;
+    }
+
+    var jarr = [{ "heightPx": 10, "scale": 3, "height": 3.33, "cnFt": 3.5, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 0.33, "enFt": 3.85, "enLeft": 0.33, "enTop": 0.67, "enBottom": 0.67, "enLine": 1.33 }, { "heightPx": 11, "scale": 3, "height": 3.67, "cnFt": 3.45, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.33, "cnLine": 0.33, "enFt": 4.2, "enLeft": 0.33, "enTop": 0.67, "enBottom": 0.67, "enLine": 1.33 }, { "heightPx": 12, "scale": 3, "height": 4, "cnFt": 3.8, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.33, "cnLine": 0.33, "enFt": 4.5, "enLeft": 0.33, "enTop": 0.67, "enBottom": 0.67, "enLine": 1.33 }, { "heightPx": 13, "scale": 3, "height": 4.33, "cnFt": 4.2, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.33, "cnLine": 0.33, "enFt": 5.2, "enLeft": 0.33, "enTop": 0.67, "enBottom": 1, "enLine": 1.67 }, { "heightPx": 14, "scale": 3, "height": 4.67, "cnFt": 4.5, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.33, "cnLine": 0.67, "enFt": 5.5, "enLeft": 0.33, "enTop": 0.67, "enBottom": 1, "enLine": 1.67 }, { "heightPx": 15, "scale": 3, "height": 5, "cnFt": 4.9, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 6.2, "enLeft": 0.33, "enTop": 1, "enBottom": 1.33, "enLine": 2.33 }, { "heightPx": 16, "scale": 3, "height": 5.33, "cnFt": 5.25, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 6.5, "enLeft": 0.33, "enTop": 1, "enBottom": 1.33, "enLine": 2.33 }, { "heightPx": 17, "scale": 3, "height": 5.67, "cnFt": 5.6, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 6.85, "enLeft": 0.33, "enTop": 1, "enBottom": 1.33, "enLine": 2.33 }, { "heightPx": 18, "scale": 3, "height": 6, "cnFt": 5.95, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 7.5, "enLeft": 0.33, "enTop": 1.33, "enBottom": 1.33, "enLine": 2.67 }, { "heightPx": 19, "scale": 3, "height": 6.33, "cnFt": 6.3, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 7.85, "enLeft": 0.33, "enTop": 1.33, "enBottom": 1.67, "enLine": 3 }, { "heightPx": 20, "scale": 3, "height": 6.67, "cnFt": 6.65, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 8.5, "enLeft": 0.33, "enTop": 1.67, "enBottom": 1.67, "enLine": 3.33 }, { "heightPx": 21, "scale": 3, "height": 7, "cnFt": 6.95, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 8.85, "enLeft": 0.33, "enTop": 1.67, "enBottom": 1.67, "enLine": 3.33 }, { "heightPx": 22, "scale": 3, "height": 7.33, "cnFt": 7.05, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 9.2, "enLeft": 0.33, "enTop": 1.67, "enBottom": 2, "enLine": 3.67 }, { "heightPx": 23, "scale": 3, "height": 7.67, "cnFt": 7.4, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 0.67, "cnLine": 1, "enFt": 9.85, "enLeft": 0.33, "enTop": 1.67, "enBottom": 2, "enLine": 3.67 }, { "heightPx": 24, "scale": 3, "height": 8, "cnFt": 7.8, "cnLeft": 0.33, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 10.2, "enLeft": 0.33, "enTop": 1.67, "enBottom": 2, "enLine": 3.67 }, { "heightPx": 25, "scale": 3, "height": 8.33, "cnFt": 8.15, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 10.5, "enLeft": 0.33, "enTop": 1.67, "enBottom": 2.33, "enLine": 4 }, { "heightPx": 26, "scale": 3, "height": 8.67, "cnFt": 8.55, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 11.2, "enLeft": 0.67, "enTop": 2, "enBottom": 2.33, "enLine": 4.33 }, { "heightPx": 27, "scale": 3, "height": 9, "cnFt": 8.95, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.33, "cnLine": 1.67, "enFt": 11.5, "enLeft": 0.67, "enTop": 2, "enBottom": 2.33, "enLine": 4.33 }, { "heightPx": 28, "scale": 3, "height": 9.33, "cnFt": 9.3, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.33, "cnLine": 1.67, "enFt": 12.2, "enLeft": 0.67, "enTop": 2.33, "enBottom": 2.67, "enLine": 5 }, { "heightPx": 29, "scale": 3, "height": 9.67, "cnFt": 9.7, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.33, "cnLine": 1.67, "enFt": 12.5, "enLeft": 0.67, "enTop": 2.33, "enBottom": 2.67, "enLine": 5 }, { "heightPx": 30, "scale": 3, "height": 10, "cnFt": 9.75, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1, "cnLine": 1.33, "enFt": 12.85, "enLeft": 0.67, "enTop": 2.33, "enBottom": 2.67, "enLine": 5 }, { "heightPx": 31, "scale": 3, "height": 10.33, "cnFt": 10.45, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.67, "cnLine": 2, "enFt": 13.5, "enLeft": 0.67, "enTop": 2.67, "enBottom": 3, "enLine": 5.67 }, { "heightPx": 32, "scale": 3, "height": 10.67, "cnFt": 10.8, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.67, "cnLine": 2, "enFt": 13.85, "enLeft": 0.67, "enTop": 2.67, "enBottom": 3, "enLine": 5.67 }, { "heightPx": 33, "scale": 3, "height": 11, "cnFt": 10.95, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.33, "cnLine": 1.67, "enFt": 14.5, "enLeft": 0.67, "enTop": 2.67, "enBottom": 3.33, "enLine": 6 }, { "heightPx": 34, "scale": 3, "height": 11.33, "cnFt": 11.2, "cnLeft": 0.67, "cnTop": 0.33, "cnBottom": 1.33, "cnLine": 1.67, "enFt": 14.85, "enLeft": 0.67, "enTop": 2.67, "enBottom": 3.33, "enLine": 6 }, { "heightPx": 35, "scale": 3, "height": 11.67, "cnFt": 11.95, "cnLeft": 1, "cnTop": 0.33, "cnBottom": 2, "cnLine": 2.33, "enFt": 15.2, "enLeft": 0.67, "enTop": 2.67, "enBottom": 3.33, "enLine": 6 }, { "heightPx": 36, "scale": 3, "height": 12, "cnFt": 12.35, "cnLeft": 1, "cnTop": 0.33, "cnBottom": 2, "cnLine": 2.33, "enFt": 15.85, "enLeft": 0.67, "enTop": 3, "enBottom": 3.67, "enLine": 6.67 }, { "heightPx": 37, "scale": 3, "height": 12.33, "cnFt": 12.5, "cnLeft": 1, "cnTop": 0.67, "cnBottom": 1.67, "cnLine": 2.33, "enFt": 16.2, "enLeft": 0.67, "enTop": 3, "enBottom": 3.67, "enLine": 6.67 }, { "heightPx": 38, "scale": 3, "height": 12.67, "cnFt": 13.1, "cnLeft": 1, "cnTop": 0.67, "cnBottom": 2, "cnLine": 2.67, "enFt": 16.5, "enLeft": 0.67, "enTop": 3, "enBottom": 3.67, "enLine": 6.67 }, { "heightPx": 39, "scale": 3, "height": 13, "cnFt": 13.45, "cnLeft": 1, "cnTop": 0.67, "cnBottom": 2, "cnLine": 2.67, "enFt": 17.2, "enLeft": 1, "enTop": 3.33, "enBottom": 4, "enLine": 7.33 }, { "heightPx": 40, "scale": 3, "height": 13.33, "cnFt": 13.85, "cnLeft": 1, "cnTop": 1, "cnBottom": 2, "cnLine": 3, "enFt": 17.5, "enLeft": 1, "enTop": 3.33, "enBottom": 4, "enLine": 7.33 }, { "heightPx": 41, "scale": 3, "height": 13.67, "cnFt": 14.25, "cnLeft": 1, "cnTop": 1, "cnBottom": 2, "cnLine": 3, "enFt": 18.2, "enLeft": 1, "enTop": 3.67, "enBottom": 4, "enLine": 7.67 }, { "heightPx": 42, "scale": 3, "height": 14, "cnFt": 14.6, "cnLeft": 1, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 18.5, "enLeft": 1, "enTop": 3.33, "enBottom": 4.33, "enLine": 7.67 }, { "heightPx": 43, "scale": 3, "height": 14.33, "cnFt": 15, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 18.85, "enLeft": 1, "enTop": 3.33, "enBottom": 4.33, "enLine": 7.67 }, { "heightPx": 44, "scale": 3, "height": 14.67, "cnFt": 15.3, "cnLeft": 1.33, "cnTop": 1.33, "cnBottom": 2, "cnLine": 3.33, "enFt": 19.55, "enLeft": 1, "enTop": 3.67, "enBottom": 4.33, "enLine": 8 }, { "heightPx": 45, "scale": 3, "height": 15, "cnFt": 15.35, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2, "cnLine": 3, "enFt": 19.85, "enLeft": 1, "enTop": 3.67, "enBottom": 4.67, "enLine": 8.33 }, { "heightPx": 46, "scale": 3, "height": 15.33, "cnFt": 15.75, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 20.55, "enLeft": 1, "enTop": 4, "enBottom": 4.67, "enLine": 8.67 }, { "heightPx": 47, "scale": 3, "height": 15.67, "cnFt": 16.15, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 20.85, "enLeft": 1, "enTop": 4, "enBottom": 4.67, "enLine": 8.67 }, { "heightPx": 48, "scale": 3, "height": 16, "cnFt": 16.5, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 21.2, "enLeft": 1, "enTop": 4, "enBottom": 5, "enLine": 9 }, { "heightPx": 49, "scale": 3, "height": 16.33, "cnFt": 16.9, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.33, "cnLine": 3.33, "enFt": 21.85, "enLeft": 1, "enTop": 4.33, "enBottom": 5, "enLine": 9.33 }, { "heightPx": 50, "scale": 3, "height": 16.67, "cnFt": 17.25, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.67, "cnLine": 3.67, "enFt": 22.2, "enLeft": 1, "enTop": 4.33, "enBottom": 5, "enLine": 9.33 }, { "heightPx": 51, "scale": 3, "height": 17, "cnFt": 17.65, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.67, "cnLine": 3.67, "enFt": 22.55, "enLeft": 1, "enTop": 4.33, "enBottom": 5.33, "enLine": 9.67 }, { "heightPx": 52, "scale": 3, "height": 17.33, "cnFt": 18.1, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.67, "cnLine": 3.67, "enFt": 23.2, "enLeft": 1.33, "enTop": 4.67, "enBottom": 5.33, "enLine": 10 }, { "heightPx": 53, "scale": 3, "height": 17.67, "cnFt": 18.4, "cnLeft": 1.33, "cnTop": 1, "cnBottom": 2.67, "cnLine": 3.67, "enFt": 23.55, "enLeft": 1.33, "enTop": 4.67, "enBottom": 5.33, "enLine": 10 }, { "heightPx": 54, "scale": 3, "height": 18, "cnFt": 18.8, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3, "cnLine": 4, "enFt": 24.2, "enLeft": 1.33, "enTop": 4.67, "enBottom": 5.67, "enLine": 10.33 }, { "heightPx": 55, "scale": 3, "height": 18.33, "cnFt": 19.15, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3, "cnLine": 4, "enFt": 24.55, "enLeft": 1.33, "enTop": 4.67, "enBottom": 5.67, "enLine": 10.33 }, { "heightPx": 56, "scale": 3, "height": 18.67, "cnFt": 19.55, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3, "cnLine": 4, "enFt": 24.85, "enLeft": 1.33, "enTop": 4.67, "enBottom": 5.67, "enLine": 10.33 }, { "heightPx": 57, "scale": 3, "height": 19, "cnFt": 19.9, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3.33, "cnLine": 4.33, "enFt": 25.55, "enLeft": 1.33, "enTop": 5, "enBottom": 6, "enLine": 11 }, { "heightPx": 58, "scale": 3, "height": 19.33, "cnFt": 20.3, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3.33, "cnLine": 4.33, "enFt": 25.85, "enLeft": 1.33, "enTop": 5, "enBottom": 6, "enLine": 11 }, { "heightPx": 59, "scale": 3, "height": 19.67, "cnFt": 20.65, "cnLeft": 1.67, "cnTop": 1, "cnBottom": 3.33, "cnLine": 4.33, "enFt": 26.55, "enLeft": 1.33, "enTop": 5.33, "enBottom": 6, "enLine": 11.33 }, { "heightPx": 60, "scale": 3, "height": 20, "cnFt": 20.85, "cnLeft": 1.67, "cnTop": 1.33, "cnBottom": 3, "cnLine": 4.33, "enFt": 26.85, "enLeft": 1.33, "enTop": 5.33, "enBottom": 6.33, "enLine": 11.67 }, { "heightPx": 61, "scale": 3, "height": 20.33, "cnFt": 21.05, "cnLeft": 1.67, "cnTop": 1.33, "cnBottom": 3, "cnLine": 4.33, "enFt": 27.2, "enLeft": 1.33, "enTop": 5.33, "enBottom": 6.33, "enLine": 11.67 }, { "heightPx": 62, "scale": 3, "height": 20.67, "cnFt": 21.45, "cnLeft": 1.67, "cnTop": 1.33, "cnBottom": 3.33, "cnLine": 4.67, "enFt": 27.85, "enLeft": 1.33, "enTop": 5.67, "enBottom": 6.33, "enLine": 12 }, { "heightPx": 63, "scale": 3, "height": 21, "cnFt": 22.2, "cnLeft": 1.67, "cnTop": 1.67, "cnBottom": 3.33, "cnLine": 5, "enFt": 28.2, "enLeft": 1.33, "enTop": 5.33, "enBottom": 6.67, "enLine": 12 }, { "heightPx": 64, "scale": 3, "height": 21.33, "cnFt": 22.45, "cnLeft": 2, "cnTop": 1.33, "cnBottom": 3.33, "cnLine": 4.67, "enFt": 28.85, "enLeft": 1.67, "enTop": 5.67, "enBottom": 6.67, "enLine": 12.33 }, { "heightPx": 65, "scale": 3, "height": 21.67, "cnFt": 22.55, "cnLeft": 2, "cnTop": 1.33, "cnBottom": 3.67, "cnLine": 5, "enFt": 29.2, "enLeft": 1.67, "enTop": 5.67, "enBottom": 6.67, "enLine": 12.33 }, { "heightPx": 66, "scale": 3, "height": 22, "cnFt": 23.35, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 29.55, "enLeft": 1.67, "enTop": 5.67, "enBottom": 7, "enLine": 12.67 }, { "heightPx": 67, "scale": 3, "height": 22.33, "cnFt": 23.65, "cnLeft": 2, "cnTop": 2, "cnBottom": 3.33, "cnLine": 5.33, "enFt": 30.2, "enLeft": 1.67, "enTop": 6, "enBottom": 7, "enLine": 13 }, { "heightPx": 68, "scale": 3, "height": 22.67, "cnFt": 23.7, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.33, "cnLine": 5, "enFt": 30.55, "enLeft": 1.67, "enTop": 6, "enBottom": 7, "enLine": 13 }, { "heightPx": 69, "scale": 3, "height": 23, "cnFt": 24.1, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 30.85, "enLeft": 1.67, "enTop": 6, "enBottom": 7.33, "enLine": 13.33 }, { "heightPx": 70, "scale": 3, "height": 23.33, "cnFt": 24.45, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 31.55, "enLeft": 1.67, "enTop": 6.33, "enBottom": 7.33, "enLine": 13.67 }, { "heightPx": 71, "scale": 3, "height": 23.67, "cnFt": 24.85, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 31.85, "enLeft": 1.67, "enTop": 6.33, "enBottom": 7.33, "enLine": 13.67 }, { "heightPx": 72, "scale": 3, "height": 24, "cnFt": 25.2, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 32.55, "enLeft": 1.67, "enTop": 6.67, "enBottom": 7.67, "enLine": 14.33 }, { "heightPx": 73, "scale": 3, "height": 24.33, "cnFt": 25.6, "cnLeft": 2, "cnTop": 1.67, "cnBottom": 4, "cnLine": 5.67, "enFt": 32.85, "enLeft": 1.67, "enTop": 6.33, "enBottom": 7.67, "enLine": 14 }, { "heightPx": 74, "scale": 3, "height": 24.67, "cnFt": 25.95, "cnLeft": 2.33, "cnTop": 1.67, "cnBottom": 4, "cnLine": 5.67, "enFt": 33.2, "enLeft": 1.67, "enTop": 6.33, "enBottom": 7.67, "enLine": 14 }, { "heightPx": 75, "scale": 3, "height": 25, "cnFt": 26.35, "cnLeft": 2.33, "cnTop": 1.67, "cnBottom": 4, "cnLine": 5.67, "enFt": 33.85, "enLeft": 1.67, "enTop": 6.67, "enBottom": 8, "enLine": 14.67 }, { "heightPx": 76, "scale": 3, "height": 25.33, "cnFt": 26.4, "cnLeft": 2.33, "cnTop": 1.67, "cnBottom": 3.67, "cnLine": 5.33, "enFt": 34.2, "enLeft": 2, "enTop": 6.67, "enBottom": 8, "enLine": 14.67 }, { "heightPx": 77, "scale": 3, "height": 25.67, "cnFt": 26.75, "cnLeft": 2.33, "cnTop": 1.67, "cnBottom": 4, "cnLine": 5.67, "enFt": 34.55, "enLeft": 2, "enTop": 7, "enBottom": 7.67, "enLine": 14.67 }, { "heightPx": 78, "scale": 3, "height": 26, "cnFt": 27.5, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.33, "cnLine": 6.33, "enFt": 34.85, "enLeft": 2, "enTop": 7, "enBottom": 8, "enLine": 15 }, { "heightPx": 79, "scale": 3, "height": 26.33, "cnFt": 27.85, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.33, "cnLine": 6.33, "enFt": 35.2, "enLeft": 2, "enTop": 7, "enBottom": 8, "enLine": 15 }, { "heightPx": 80, "scale": 3, "height": 26.67, "cnFt": 28.25, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 35.55, "enLeft": 2, "enTop": 7, "enBottom": 8, "enLine": 15 }, { "heightPx": 81, "scale": 3, "height": 27, "cnFt": 28.6, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 36.2, "enLeft": 2, "enTop": 7.33, "enBottom": 8.33, "enLine": 15.67 }, { "heightPx": 82, "scale": 3, "height": 27.33, "cnFt": 29, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 36.55, "enLeft": 2, "enTop": 7.33, "enBottom": 8.33, "enLine": 15.67 }, { "heightPx": 83, "scale": 3, "height": 27.67, "cnFt": 29.2, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.33, "cnLine": 6.33, "enFt": 37.2, "enLeft": 2, "enTop": 7.67, "enBottom": 8.33, "enLine": 16 }, { "heightPx": 84, "scale": 3, "height": 28, "cnFt": 29.4, "cnLeft": 2.33, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 37.55, "enLeft": 2, "enTop": 7.67, "enBottom": 8.67, "enLine": 16.33 }, { "heightPx": 85, "scale": 3, "height": 28.33, "cnFt": 29.75, "cnLeft": 2.67, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 37.85, "enLeft": 2, "enTop": 7.33, "enBottom": 8.67, "enLine": 16 }, { "heightPx": 86, "scale": 3, "height": 28.67, "cnFt": 30.15, "cnLeft": 2.67, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 38.55, "enLeft": 2, "enTop": 7.67, "enBottom": 8.67, "enLine": 16.33 }, { "heightPx": 87, "scale": 3, "height": 29, "cnFt": 30.5, "cnLeft": 2.67, "cnTop": 2, "cnBottom": 4.67, "cnLine": 6.67, "enFt": 38.85, "enLeft": 2, "enTop": 7.67, "enBottom": 8.67, "enLine": 16.33 }, { "heightPx": 88, "scale": 3, "height": 29.33, "cnFt": 31.3, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 5, "cnLine": 7.33, "enFt": 39.2, "enLeft": 2, "enTop": 7.67, "enBottom": 9, "enLine": 16.67 }, { "heightPx": 89, "scale": 3, "height": 29.67, "cnFt": 31.65, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 5, "cnLine": 7.33, "enFt": 39.85, "enLeft": 2.33, "enTop": 8, "enBottom": 9, "enLine": 17 }, { "heightPx": 90, "scale": 3, "height": 30, "cnFt": 31.95, "cnLeft": 2.67, "cnTop": 2.67, "cnBottom": 4.67, "cnLine": 7.33, "enFt": 40.2, "enLeft": 2.33, "enTop": 8, "enBottom": 9, "enLine": 17 }, { "heightPx": 91, "scale": 3, "height": 30.33, "cnFt": 32.05, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 4.67, "cnLine": 7, "enFt": 40.85, "enLeft": 2.33, "enTop": 8.33, "enBottom": 9.33, "enLine": 17.67 }, { "heightPx": 92, "scale": 3, "height": 30.67, "cnFt": 32.4, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 5, "cnLine": 7.33, "enFt": 41.2, "enLeft": 2.33, "enTop": 8.33, "enBottom": 9.33, "enLine": 17.67 }, { "heightPx": 93, "scale": 3, "height": 31, "cnFt": 32.8, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 5, "cnLine": 7.33, "enFt": 41.55, "enLeft": 2.33, "enTop": 8.33, "enBottom": 9.33, "enLine": 17.67 }, { "heightPx": 94, "scale": 3, "height": 31.33, "cnFt": 33.15, "cnLeft": 2.67, "cnTop": 2.33, "cnBottom": 5, "cnLine": 7.33, "enFt": 42.2, "enLeft": 2.33, "enTop": 8.33, "enBottom": 9.67, "enLine": 18 }, { "heightPx": 95, "scale": 3, "height": 31.67, "cnFt": 33.55, "cnLeft": 3, "cnTop": 2.33, "cnBottom": 5.33, "cnLine": 7.67, "enFt": 42.55, "enLeft": 2.33, "enTop": 8.33, "enBottom": 9.67, "enLine": 18 }, { "heightPx": 96, "scale": 3, "height": 32, "cnFt": 33.95, "cnLeft": 3, "cnTop": 2.33, "cnBottom": 5.33, "cnLine": 7.67, "enFt": 43.2, "enLeft": 2.33, "enTop": 8.67, "enBottom": 10, "enLine": 18.67 }, { "heightPx": 97, "scale": 3, "height": 32.33, "cnFt": 34.3, "cnLeft": 3, "cnTop": 2.33, "cnBottom": 5.33, "cnLine": 7.67, "enFt": 43.55, "enLeft": 2.33, "enTop": 8.67, "enBottom": 10, "enLine": 18.67 }, { "heightPx": 98, "scale": 3, "height": 32.67, "cnFt": 34.7, "cnLeft": 3, "cnTop": 2.67, "cnBottom": 5.33, "cnLine": 8, "enFt": 43.85, "enLeft": 2.33, "enTop": 8.67, "enBottom": 10, "enLine": 18.67 }, { "heightPx": 99, "scale": 3, "height": 33, "cnFt": 35.05, "cnLeft": 3, "cnTop": 2.67, "cnBottom": 5.67, "cnLine": 8.33, "enFt": 44.55, "enLeft": 2.33, "enTop": 9, "enBottom": 10.33, "enLine": 19.33 }]
+    document.write("<p>&nbsp;</p>");
+    document.write("<p>Android设计图字体对应表:</p>");
+    for (var i = 0; i < jarr.length; i++) {
+        var tfont = jarr[i];
+        var fheight = getHeight(tfont);
+        var fcn = getCn(tfont);
+        var fen = getEn(tfont);
+
+        var strText = fheight;
+        strText += ", " + fcn;
+        strText += ", " + fen;
+
+        document.write("<p>" + strText + "</p>");
+    }
+    document.write("<p>&nbsp;</p>");
+
+    function findFont() {
+        var str = document.getElementById("fontHeight").value;
+        var iheight = 0;
+        var fheight = 0.0;
+        var fsize = -1;
+        var tfontSel = null;
+
+        if (document.getElementById("chbHeight").checked) {
+            fheight = parseFloat(str);
+            for (var i = 0; i < jarr.length; i++) {
+                var tfont = jarr[i];
+                if (i < jarr.length){
+                    var tfontNext = jarr[i + 1];
+                    if (tfont.height >= fheight && tfontNext.height > fheight){
+                        fsize = tfont.cnFt;
+                        tfontSel = tfont;
+                        break;
+                    }
+                }
+            }
+        } else {
+            iheight = parseInt(str);
+            for (var i = 0; i < jarr.length; i++) {
+                var tfont = jarr[i];
+                if (i < jarr.length){
+                    var tfontNext = jarr[i + 1];
+                    if (tfont.heightPx >= iheight && tfontNext.heightPx > iheight){
+                        fsize = tfont.cnFt;
+                        tfontSel = tfont;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (tfontSel != null){
+            var tfont = tfontSel;
+            var fheight = getHeight(tfont);
+            var fcn = getCn(tfont);
+            var fen = getEn(tfont);
+
+            var strText = fheight;
+            strText += ", " + fcn;
+            strText += ", " + fen;
+            document.getElementById("fontSize").innerHTML = "" + strText;
+        }
+        else{
+            document.getElementById("fontSize").innerHTML = "未检索到字体";
+        }
+    }
+</script>
