@@ -1,0 +1,46 @@
+values-small : 屏幕小于 3 英寸左右
+values-normal: 屏幕在 4.5 英寸左右, 小米2s的4.3英寸, 小米3的5英寸, 小米5的5.1英寸428ppi1920x1080, 小米8SE的5.88英寸440ppi-2240x1080-RATIO:2.75,
+values-large : 屏幕在 7 英寸左右
+values-xlarge: 屏幕在 10 英寸左右
+可以用分辨率除于ppi来大致计算屏幕的物理尺寸
+
+
+android 对不同尺寸不同像素密度等级划分
+实际尺寸           2           4                   7                10
+              <-------------------------------------------------->
+尺寸等级           small     normal              large          xlarge
+
+
+实际像素密度    100                       200                 300              480
+<---------------------------------------------------------------------------------->
+像素密度等级     ldpi(120)     mdpi(160)  hdpi(240)           xhdpi(340)       xxhdpi(480)
+
+小米5对应的为480dpi
+
+         4.0英寸     4.1-4.4英寸     4.5-4.9英寸     5.0英寸    5.1-5.9英寸
+800x480    s              s               s             s             s
+720P       s              s               s             s             s
+1080P      s              s               s             s             s
+2000P                                                                 s
+
+然后手机的屏幕又分为FWVGA，WVGA，VGA，HVGA，QVGA，其中
+    VGA是：Video Graphic Array，显示标准为480 x 640；
+    WVGA是Wide VGA，分辨率为480 x 800；
+    FWVGA是Full Wide VGA，分辨率为：480 x 854；
+    HVGA是Half VGA，分辨率为：320 x 480；
+    QVGA是Quarter VGA，分辨率为：240 x 320；
+Android Icon Size and Location for Apps
+DENSITY	  LOGO_ICON    LOCATION          RATIO   SCREEN   MARGIN
+XXXHDPI	  192×192     drawable-xxxhdpi  4       640 DPI    12 to 16 pixels
+ XXHDPI	  144×144     drawable-xxhdpi   3       480 DPI     8 to 12 pixels, 小米5的无文字按钮图标放这里要96*96像素才适中,对应32dp
+  XHDPI	   96×96      drawable-xhdpi    2       320 DPI     6 to  8 pixels
+   HDPI	   72×72      drawable-hdpi     1.5     240 DPI     4 to  6 pixels
+   MDPI	   48×48      drawable-mdpi     1       160 DPI     3 to  4 pixels
+   LDPI	   36×36      drawable-ldpi     0.75    120 DPI     2 to  3 pixels
+
+Arcgis for android的问题
+1：PictureMarkerSymbol大小和setOffsetY问题->DPI为160, 图片被缩放到160DPI的大小再转成symbol，但真正在地图上绘制图片时又转成原来的DPI
+2: 绘制点的大小，文本字段大小也同理
+
+jni
+android skcanvas
