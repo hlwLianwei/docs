@@ -1,0 +1,7 @@
+1、图片有两个地方可以存放，一是static文件，二是assets文件夹。
+2、static文件夹的图片访问方式是绝对路径，如【/static/xxx.png】
+3、assets文件夹的图片访问方式是相对路径，如【../../assets/xxx.png】
+4、本项目采用static方式存放图片，不用考虑源码层级深度。
+5、部分图标采集iconfont的方式，需要设计稿切图时生成svg格式，并在【https://www.iconfont.cn/】上传制作。
+6、iconfont图标在App.vue的style样式中添加在线引用。
+7、第三方库mint-ui引用，在main.js添加【import 'mint-ui/lib/style.css'】的css时错，可以转在线引用方式，在index.html的head标签添加【<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css" />】。
