@@ -1,6 +1,5 @@
-# AppSore及开发者相关
-[AppStore提交审核发布](https://appstoreconnect.apple.com/)
-[App开发者网址](https://appstoreconnect.apple.com/)
-
-# 开发资料
-[cocoapods安装](https://github.com/hlwLianwei/docs/blob/master/IOS/cocoapods安装.txt)
+# H5及微信小程序相关
+[项目创建步骤](https://github.com/hlwLianwei/docs/blob/master/H5/项目创建步骤.txt) 
+[项目移动端配置布局方式](https://github.com/hlwLianwei/docs/blob/master/H5/项目移动端配置布局方式.txt) 
+[资源文件存放位置说明](https://github.com/hlwLianwei/docs/blob/master/H5/资源文件存放位置说明.txt) 
+[css-flex样式说明](https://github.com/hlwLianwei/docs/blob/master/H5/css-flex样式.txt) 
