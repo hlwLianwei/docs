@@ -5,3 +5,5 @@
 [android 控件属性大全](https://github.com/hlwLianwei/docs/blob/master/Android/android控件属性大全.txt/)  
 [android 屏幕布局](https://github.com/hlwLianwei/docs/blob/master/Android/android屏幕布局.txt/)  
 
+[gradle构建相关](https://github.com/hlwLianwei/docs/blob/master/Android/gradle构建相关.md/)  
+
