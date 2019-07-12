@@ -7,3 +7,7 @@
 
 [gradle构建相关](https://github.com/hlwLianwei/docs/blob/master/Android/gradle构建相关.md/)  
 
+# AndroidStudio混淆相关  
+[Android studio 混淆配置](https://www.jianshu.com/p/48d6bce58e47)  
+[Android Proguard 不混淆所有第三方jar（忽略配置设置）](https://blog.csdn.net/weimingjue/article/details/84976058)  
+
