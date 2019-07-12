@@ -4,7 +4,7 @@
   
 桌面部分: [Windows](https://github.com/hlwLianwei/docs/blob/master/Windows/TechLink.md),  [MacOS](https://github.com/hlwLianwei/docs/blob/master/MacOS/TechLink.md),  [Linux](https://github.com/hlwLianwei/docs/blob/master/Linux/TechLink.md),  [VirtualBox](https://github.com/hlwLianwei/docs/blob/master/VirtualBox/TechLink.md)  
 
-其他零散资料
-. [特殊字符集](https://unicode-table.com/cn/#cjk-unified-ideographs)  
-. [在线 Markdown 编辑阅读器](https://www.zybuluo.com/)  
+其他零散资料  
+1. [特殊字符集](https://unicode-table.com/cn/#cjk-unified-ideographs)  
+2. [在线 Markdown 编辑阅读器](https://www.zybuluo.com/)  
 
