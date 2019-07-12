@@ -11,3 +11,6 @@
 [Android studio 混淆配置](https://www.jianshu.com/p/48d6bce58e47)  
 [Android Proguard 不混淆所有第三方jar（忽略配置设置）](https://blog.csdn.net/weimingjue/article/details/84976058)  
 
+# Android 开源项目分类汇总(第三方库)  
+[Android 开源项目分类汇总(第三方库)](https://github.com/Trinea/android-open-project)  
+
