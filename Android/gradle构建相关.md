@@ -20,6 +20,12 @@ android {
 }
 ```
 
+# android studio生成keystore文件
+在android studio的菜单栏，“Build”选择，弹出选择“Generate Signed Bundle / APK..”，弹出对话框勾选“APK”，点下一步，点击“Create new..”创建新的key store，弹出框，选择保存文件位置及填写信息，点击“OK”返回，在返回的对话框点击“Next”下一步，在“Build Type”选择release或debug，同时勾选“V2(Full APK Signature)”，点击“Finish”即可。  
+查看keystore方件的 md5 或 sh1，在android studio的终端下，cd到keystore文件所有文件夹，执行如下命令：  
+keytool -v -list -keystore signed_key_debug.jks 
+
+
 # 构建时自动签名 release及debug  
 在项目app文件夹下的build.gradle文件里，添加release和debug的签名文件信息配置代码  
 ```android
@@ -44,7 +50,10 @@ android {
         }
 
         debug {
-            storeFile file("../app/signed_key_debug.keystore")  // 签名文件位置
+            keyAlias 'xxx'
+            keyPassword 'xxx'
+            storeFile file('../app/signed_key_debug.jks')     // 签名文件位置
+            storePassword 'xxx'
         }
     }
 }
