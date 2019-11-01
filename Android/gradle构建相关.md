@@ -53,5 +53,5 @@ android {
 Build Types选页里配置debug的Signing Config项为debug，配置release的Signing Config项为release， 然后按钮OK按钮保存。
 
 # AndroidStudio 编译签名apk的另一种方法  
-![编译签名apk的方法](https://raw.githubusercontent.com/hlwLianwei/docs/master/Android/images/编译签名apk的方法.png)  
+![编译签名apk的方法](/images/编译签名apk的方法.png)  
 
