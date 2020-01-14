@@ -1,6 +1,3 @@
-# AppSore及开发者相关
-[AppStore提交审核发布](https://appstoreconnect.apple.com/)
-[App开发者网址](https://appstoreconnect.apple.com/)
+# Easy Mock后台假数据测试工具
+[Easy Mock安装](https://github.com/hlwLianwei/docs/blob/master/Windows/部署说明.txt)
 
-# 开发资料
-[cocoapods安装](https://github.com/hlwLianwei/docs/blob/master/IOS/cocoapods安装.txt)

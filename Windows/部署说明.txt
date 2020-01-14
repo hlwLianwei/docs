@@ -1,0 +1,23 @@
+01:安装MongoDB数据库,要大于v3.4及以上版本的https://www.mongodb.com/download-center/community；
+   安装目录D:\Program Files\MongoDB；
+   安装MongoDB时，不要勾选mongodb compass项，否则安装过程会卡住；
+   安装完成后创建数据存放文件夹D:\MongoDB\data\db，这个路径不能有空格(中文?)；
+   命令行下cd到安装目录，运行：mongod --dbpath D:\MongoDB\data\db （路径根据个人安装情况而变，不能有空格或中文）
+   在浏览器输入：http://localhost:27017/，你会看到：
+   It looks like you are trying to acess MongoDB over HTTP on the native driver port.
+
+02:安装redis数据库，要v4.0版本及以上的，windows版本不好找。
+   使用附件下的redis-4.0.2.3.zip,绿色版本的，解压到D:\Program Files\redis-4.0.2.3；
+   命令行下cd到安装目录，运行：redis-server.exe redis.windows.conf，
+
+03:安装nodejs，要v8.x版本的https://nodejs.org/en/blog/release/v8.9.0/
+   安装目录D:\Program Files\nodejs；
+
+04:下载Easy-Mock，https://github.com/easy-mock/easy-mock；
+   解压到D:\WorkSpace\easy-mock-dev；
+   命令行下cd到安装目录，安装依赖项：npm install；
+   若出现if not defined npm_config_node_gyp等错误，则安装：npm install -g node-gyp；
+   若出现fsevents错误，则在依赖项中删除fsevents依赖，这个在windows下不需要；
+   npm install安装成功后，修改config下default.json文件将host改为localhost或者本地ip；
+   运行：npm run dev 启动项目(先确保MongoDB和redis已经运行)；
+   在浏览器输入http://localhost:7300/
