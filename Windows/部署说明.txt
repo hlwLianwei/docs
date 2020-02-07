@@ -1,23 +1,115 @@
-01:°²×°MongoDBÊı¾İ¿â,Òª´óÓÚv3.4¼°ÒÔÉÏ°æ±¾µÄhttps://www.mongodb.com/download-center/community£»
-   °²×°Ä¿Â¼D:\Program Files\MongoDB£»
-   °²×°MongoDBÊ±£¬²»Òª¹´Ñ¡mongodb compassÏî£¬·ñÔò°²×°¹ı³Ì»á¿¨×¡£»
-   °²×°Íê³Éºó´´½¨Êı¾İ´æ·ÅÎÄ¼ş¼ĞD:\MongoDB\data\db£¬Õâ¸öÂ·¾¶²»ÄÜÓĞ¿Õ¸ñ(ÖĞÎÄ?)£»
-   ÃüÁîĞĞÏÂcdµ½°²×°Ä¿Â¼£¬ÔËĞĞ£ºmongod --dbpath D:\MongoDB\data\db £¨Â·¾¶¸ù¾İ¸öÈË°²×°Çé¿ö¶ø±ä£¬²»ÄÜÓĞ¿Õ¸ñ»òÖĞÎÄ£©
-   ÔÚä¯ÀÀÆ÷ÊäÈë£ºhttp://localhost:27017/£¬Äã»á¿´µ½£º
+01:å®‰è£…MongoDBæ•°æ®åº“,è¦å¤§äºv3.4åŠä»¥ä¸Šç‰ˆæœ¬çš„https://www.mongodb.com/download-center/communityï¼›
+   å®‰è£…ç›®å½•D:\Program Files\MongoDBï¼›
+   å®‰è£…MongoDBæ—¶ï¼Œä¸è¦å‹¾é€‰mongodb compassé¡¹ï¼Œå¦åˆ™å®‰è£…è¿‡ç¨‹ä¼šå¡ä½ï¼›
+   å®‰è£…å®Œæˆååˆ›å»ºæ•°æ®å­˜æ”¾æ–‡ä»¶å¤¹D:\MongoDB\data\dbï¼Œè¿™ä¸ªè·¯å¾„ä¸èƒ½æœ‰ç©ºæ ¼(ä¸­æ–‡?)ï¼›
+   å‘½ä»¤è¡Œä¸‹cdåˆ°å®‰è£…ç›®å½•ï¼Œè¿è¡Œï¼šmongod --dbpath D:\MongoDB\data\db ï¼ˆè·¯å¾„æ ¹æ®ä¸ªäººå®‰è£…æƒ…å†µè€Œå˜ï¼Œä¸èƒ½æœ‰ç©ºæ ¼æˆ–ä¸­æ–‡ï¼‰
+   åœ¨æµè§ˆå™¨è¾“å…¥ï¼šhttp://localhost:27017/ï¼Œä½ ä¼šçœ‹åˆ°ï¼š
    It looks like you are trying to acess MongoDB over HTTP on the native driver port.
 
-02:°²×°redisÊı¾İ¿â£¬Òªv4.0°æ±¾¼°ÒÔÉÏµÄ£¬windows°æ±¾²»ºÃÕÒ¡£
-   Ê¹ÓÃ¸½¼şÏÂµÄredis-4.0.2.3.zip,ÂÌÉ«°æ±¾µÄ£¬½âÑ¹µ½D:\Program Files\redis-4.0.2.3£»
-   ÃüÁîĞĞÏÂcdµ½°²×°Ä¿Â¼£¬ÔËĞĞ£ºredis-server.exe redis.windows.conf£¬
+02:å®‰è£…redisæ•°æ®åº“ï¼Œè¦v4.0ç‰ˆæœ¬åŠä»¥ä¸Šçš„ï¼Œwindowsç‰ˆæœ¬ä¸å¥½æ‰¾ã€‚
+   ä½¿ç”¨é™„ä»¶ä¸‹çš„redis-4.0.2.3.zip,ç»¿è‰²ç‰ˆæœ¬çš„ï¼Œè§£å‹åˆ°D:\Program Files\redis-4.0.2.3ï¼›
+   å‘½ä»¤è¡Œä¸‹cdåˆ°å®‰è£…ç›®å½•ï¼Œè¿è¡Œï¼šredis-server.exe "D:\Program Files\redis-4.0.2.3\redis.windows.conf"ï¼Œ
 
-03:°²×°nodejs£¬Òªv8.x°æ±¾µÄhttps://nodejs.org/en/blog/release/v8.9.0/
-   °²×°Ä¿Â¼D:\Program Files\nodejs£»
+03:å®‰è£…nodejsï¼Œè¦v8.xç‰ˆæœ¬çš„https://nodejs.org/en/blog/release/v8.9.0/
+   å®‰è£…ç›®å½•D:\Program Files\nodejsï¼›
 
-04:ÏÂÔØEasy-Mock£¬https://github.com/easy-mock/easy-mock£»
-   ½âÑ¹µ½D:\WorkSpace\easy-mock-dev£»
-   ÃüÁîĞĞÏÂcdµ½°²×°Ä¿Â¼£¬°²×°ÒÀÀµÏî£ºnpm install£»
-   Èô³öÏÖif not defined npm_config_node_gypµÈ´íÎó£¬Ôò°²×°£ºnpm install -g node-gyp£»
-   Èô³öÏÖfsevents´íÎó£¬ÔòÔÚÒÀÀµÏîÖĞÉ¾³ıfseventsÒÀÀµ£¬Õâ¸öÔÚwindowsÏÂ²»ĞèÒª£»
-   npm install°²×°³É¹¦ºó£¬ĞŞ¸ÄconfigÏÂdefault.jsonÎÄ¼ş½«host¸ÄÎªlocalhost»òÕß±¾µØip£»
-   ÔËĞĞ£ºnpm run dev Æô¶¯ÏîÄ¿(ÏÈÈ·±£MongoDBºÍredisÒÑ¾­ÔËĞĞ)£»
-   ÔÚä¯ÀÀÆ÷ÊäÈëhttp://localhost:7300/
+04:ä¸‹è½½Easy-Mockï¼Œhttps://github.com/easy-mock/easy-mockï¼›
+   è§£å‹åˆ°D:\WorkSpace\easy-mock-devï¼›
+   å‘½ä»¤è¡Œä¸‹cdåˆ°å®‰è£…ç›®å½•ï¼Œå®‰è£…ä¾èµ–é¡¹ï¼šnpm installï¼›
+   è‹¥å‡ºç°if not defined npm_config_node_gypç­‰é”™è¯¯ï¼Œåˆ™å®‰è£…ï¼šnpm install -g node-gypï¼›
+   è‹¥å‡ºç°fseventsé”™è¯¯ï¼Œåˆ™åœ¨ä¾èµ–é¡¹ä¸­åˆ é™¤fseventsä¾èµ–ï¼Œè¿™ä¸ªåœ¨windowsä¸‹ä¸éœ€è¦ï¼›
+   npm installå®‰è£…æˆåŠŸåï¼Œä¿®æ”¹configä¸‹default.jsonæ–‡ä»¶å°†hostæ”¹ä¸ºlocalhostæˆ–è€…æœ¬åœ°ipï¼›
+   è¿è¡Œï¼šnpm run dev å¯åŠ¨é¡¹ç›®(å…ˆç¡®ä¿MongoDBå’Œrediså·²ç»è¿è¡Œ)ï¼›
+   åœ¨æµè§ˆå™¨è¾“å…¥http://localhost:7300/
+
+
+//mockjs æ–‡æ¡£çš„githubåœ°å€: https://github.com/nuysoft/Mock/wiki
+
+let Mock = require('mockjs');
+let basicData = Mock.mock({
+    'list|1-100': [{
+        'id|+1': 1,
+        'isBoolean': '@boolean(10, 0, true)',//ç™¾åˆ†ä¹‹ç™¾çš„true
+        'naturalNumber': '@natural(1, 1000)', //å¤§äºç­‰äºé›¶çš„æ•´æ•°
+        'integer': '@integer(0)', //éšæœºæ•´æ•°
+        'float': '@float(1, 100, 3, 6)', //éšæœºæµ®ç‚¹æ•°, 
+        'character': '@character("upper")', //ä¸€ä¸ªéšæœºå­—ç¬¦
+        'string': '@string("lower", 5, 20)', //ä¸€ä¸²éšæœºå­—ç¬¦ä¸²
+        'range': '@range(1, 10, 2)', //ä¸€ä¸ªæ•´å½¢æ•°ç»„ï¼Œæ­¥é•¿ä¸º2
+    }]
+});
+
+// console.log(basicData);
+
+let Date = Mock.mock({
+    'dateList|10': [{
+        'date': '@date',
+        'date-yyyy-MM-dd': '@date(yyyy-MM-dd)',
+        'date-yy-MM-dd': '@date(yy-MM-dd)',
+        'date-y-MM-dd': '@date(y-MM-dd)',
+        'date-y-M-d': '@date(y-M-d)',
+        'line-through': '------------------------------------------------',
+        'timessss': '@time', //éšæœºçš„æ—¶é—´å­—ç¬¦ä¸²,
+        'time-format': '@time()', //æŒ‡ç¤ºç”Ÿæˆçš„æ—¶é—´å­—ç¬¦ä¸²çš„æ ¼å¼, default: 'HH: mm: ss',
+        'time-format-1': '@time("A HH:mm:ss")',
+        'time-format-2': '@time("a HH:mm:ss")',
+        'time-format-3': '@time("HH:mm:ss")',
+        'time-format-4': '@time("H:m:s")',
+        'datetime': '@datetime("yyyy-MM-dd A HH:mm:ss")', //è¿”å›ä¸€ä¸ªéšæœºçš„æ—¥æœŸå’Œæ—¶é—´å­—ç¬¦ä¸²
+        'dateNow': '@now("second")' //è·å–å½“å‰å®Œæ•´æ—¶é—´
+    }]
+});
+// console.log(Date);
+
+let imageList = Mock.mock({
+    'imageList|5': [{
+        'id|+1': 1,
+        'img': '@image',//ç”Ÿæˆä¸€ä¸ªéšæœºçš„å›¾ç‰‡åœ°å€,
+        'img-1': '@image("200x100", "#000", "#fff", "png", "Mock.js")', //ç”Ÿæˆä¸€ä¸ª200*100, èƒŒæ™¯è‰²#000ï¼Œå‰æ™¯è‰²#fff, æ ¼å¼png, æ–‡å­—mock.jsçš„å›¾ç‰‡
+    }]
+})
+// console.log(imageList);
+
+let paragraph = Mock.mock({
+    'paragraphList|5': [{
+        'id|+1': 1,
+        'paragraph1': '@cparagraph(2)', //ç”Ÿæˆä¸€æ®µ2å¥è¯çš„ä¸­æ–‡æ–‡æœ¬,
+        'paragraph2': '@paragraph(3)', //ç”Ÿæˆä¸€ä¸ª3å¥è¯çš„è‹±æ–‡æ–‡æœ¬
+        'title': '@title', //éšæœºç”Ÿæˆä¸€ä¸ªè‹±æ–‡æ ‡é¢˜
+        'ctitle': '@ctitle', //éšæœºç”Ÿæˆä¸€ä¸ªä¸­æ–‡æ ‡é¢˜
+    }]
+})
+// console.log(paragraph);
+
+let name = Mock.mock({
+    'nameList|5': [{
+        'id|+1': 1,
+        'name': '@name', //è‹±æ–‡å,
+        'cname': '@cname', //ä¸­æ–‡å
+    }]
+})
+// console.log(name);
+
+let webList = Mock.mock({
+    'webList|5': [{
+        'id|+1': 0,
+        'url': '@url("http", "baidu.com")', //url: http://www.baidu.com
+        'protocol': '@protocol', //éšæœºç”Ÿæˆä¸€ä¸ªurlåè®®
+        'domain': '@domain', //éšæœºç”Ÿæˆä¸€ä¸ªåŸŸå,
+        'email': '@email', //éšæœºç”Ÿæˆä¸€ä¸ªé‚®ç®±åœ°å€,
+        'ip': '@ip' //éšæœºç”Ÿæˆä¸€ä¸ªipåœ°å€
+    }]
+})
+// console.log(webList);
+
+let address = Mock.mock({
+    'addressList|5': [{
+        'id|+1': 1,
+        'region': '@region', //ç”Ÿæˆä¸€ä¸ªå¤§åŒº
+        'province': '@province', //ç”Ÿæˆä¸€ä¸ªçœä»½
+        'city': '@city', //ç”Ÿæˆä¸€ä¸ªå¸‚
+        'country': '@country', //ä¸€ä¸ªå¿
+        'zip': '@zip', //é‚®æ”¿ç¼–ç 
+    }]
+})
+console.log(address)
