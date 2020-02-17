@@ -1,6 +1,8 @@
-# AppSore及开发者相关
-[AppStore提交审核发布](https://appstoreconnect.apple.com/)
-[App开发者网址](https://appstoreconnect.apple.com/)
-
-# 开发资料
-[cocoapods安装](https://github.com/hlwLianwei/docs/blob/master/IOS/cocoapods安装.txt)
+1、win7下，使用解码的主题dll时，会造成vbox打开虚拟机的bug，恢复破解的主题dll即可；
+2、重装后，到VirtualBox存放虚拟机的文件夹，鼠标右键点击各虚拟机的*.vbox文件，选择“打开”即可将该虚拟机添加到列表中；
+3、安装拓展包，打开vbox管理器，在菜单-全局设定，在全局设定界面的左侧，点击“扩展”，添加对应版本扩展包；
+4、增加显存的方式：打开3D加速，命令修改虚拟机显存为256M:VBoxManage modifyvm "MacMojave" --vram 256
+5、主机屏幕分辨在1920x1080时，虚拟机的分辨率设置为1560x960比较合适，刚才能看到整个屏幕内容；
+6、Android虚拟大容量SD卡, 在VirtualBox里，为Android虚拟机添加IDE虚拟硬盘(选32G容量)，并将新的硬盘切换成第二IDE控制器主通道。把旧虚拟SD卡硬盘删除掉；
+7、Android虚拟机与主机同一网段, 在VirtualBox里，设置Android虚拟机网络的第二块网卡为桥接，混杂模式选择：允许虚拟机；
+8、虚拟机主机同一网段, 在VirtualBox里，设置虚拟机网络的网卡为桥接，混杂模式选择：允许虚拟机(或全部允许)；将主机和虚拟机的网络位置都设置成同一类型(如都为工作网络)，若无法主机ping不通虚拟机，可以虚拟机防火墙关闭；
