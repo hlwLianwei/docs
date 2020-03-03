@@ -73,7 +73,7 @@ sudo yum install ibus-table-chinese-wubi-haifeng.noarch -y
 + 到设置->Region & Language, 添加输入法， 添加五笔输入法
 + 到设置->设备->keyboard，设置输入法切换快捷键为ctrl+space
 
-## 安装docke
+## 安装docker
 要求 CentOS 系统的内核版本高于3.10, 查看版本: 
 ```
 uname -r
