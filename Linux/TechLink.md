@@ -164,6 +164,18 @@ sudo yum localinstall mysql57-community-release-el7-8.noarch.rpm
 安装MySQL: 
 ```
 sudo yum install mysql-community-server
+sudo yum install mysql-client
+sudo yum install libmysqlclient-dev
+sudo yum install mysql-community-devel.x86_64
+sudo yum install libssl-dev build-essential zlibczlib-bin libidn11-dev libidn11
+yum install openssl-devel
+```
+若要卸载mysql，则执行命令:
+```
+sudo rm /var/lib/mysql/ -R
+sudo rm /etc/mysql/ -R
+sudo yum autoremove mysql* --purge
+sudo yum remove apparmor
 ```
 启动命令: 
 ```
