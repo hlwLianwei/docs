@@ -199,10 +199,15 @@ systemctl start mysqld
 ```
 mysql -u root -p
 ```
-修改密码, 密码要求包含有大小定字母，数字，符号。注间sql语句要与分号结束: 
+修改密码, 设置远程访问及全表权限, 更新权限。密码要求包含有大小定字母，数字，符号。注间sql语句要与分号结束: 
 ```
 ALTER user 'root'@'localhost' IDENTIFIED BY 'xxxxxxxx';
+grant all privileges on *.* to root@'%'identified by 'xxxxxxxx';
+flush privileges;
 ```
 修改密码后，重新登录mysql。
+```
+exit;
+```
 
 
