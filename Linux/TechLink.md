@@ -132,26 +132,6 @@ sudo docker restart 5ff68a821c5d
 sudo pkill docker
 ```
 
-## 安装opensips容器镜像(sip音视频通讯服务器)
-最新版本安装命令: 
-```
-sudo docker pull opensips/opensips
-```
-或指定版本$VERSION来安装
-```
-sudo docker pull opensips/opensips:$VERSION
-```
-
-查看所有本地容器镜像: 
-```
-sudo docker images
-```
-
-运行容器镜像，将容器镜像里的5060端口映射到主机的5060端口, /udp指定端口类型为upd, 若不写则默认tcp: 
-```
-sudo docker run -d -p 5060:5060/udp opensips/opensips
-```
-
 ## 安装mysql 5.7
 配置YUM源: 
 ```
@@ -209,5 +189,183 @@ flush privileges;
 ```
 exit;
 ```
+### mysql密码错误的办法
+打开配置文件
+```
+vim /etc/my.cnf
+```
+在最后一行添加"skip-grant-tables"， 按esc建，然后输入:wq，进行保存退出编辑器
+重启mysql服务
+```
+service mysqld restart
+```
+登录数据库
+```
+mysql -u root -p   #登录数据库，出现Enter password: 这地方不用输入密码，直接回车
+```
+可以打开数据库表查看信息
+```
+use mysql; #这个语句要有分号
+show tables;
+desc user;
+```
+修改配置，使所有外部访问远程访问都使用root账号xxxxx密码访问；密码要求包含有大小定字母，数字，符号。注间sql语句要与分号结束: 
+```
+update user set authentication_string=password('xxxxxxx') where user='root';
+```
+更新配置
+```
+flush privileges;
+```
+退出数据库
+```
+quit;
+```
+重启mysql
+```
+service mysqld restart
+```
 
+## opensips部署-docker方式, 安装opensips容器镜像(sip音视频通讯服务器)
+最新版本安装命令: 
+```
+sudo docker pull opensips/opensips
+```
+或指定版本$VERSION来安装
+```
+sudo docker pull opensips/opensips:$VERSION
+```
 
+查看所有本地容器镜像: 
+```
+sudo docker images
+```
+
+运行容器镜像，将容器镜像里的5060端口映射到主机的5060端口, /udp指定端口类型为upd, 若不写则默认tcp: 
+```
+sudo docker run -d -p 5060:5060/udp opensips/opensips
+```
+
+## opensips部署-下载源码编译方式
+这个教程只适用centos7, mysql5.7, opensips-2.4.0版本, 其他版本按此方法可能无法部署  
+前置条件先安装好mysql，配置监听端口，开启防火墙5060端口：
+```
+firewall-cmd --zone=public --add-port=5060/udp --permanent
+firewall-cmd --reload
+```
+开始下载源码, 先切换到指定目录下, git下载指定版本的源码  
+```
+cd /usr/local/src/
+git clone https://github.com/OpenSIPS/opensips.git -b2.4.0 opensips-2.4.0
+```
+下载完成后，切换到opensips-2.4.0, 编译, 编译完成后配置菜单  
+```
+cd opensips-2.4.0
+make all
+make menuconfig
+```
+在菜单中：  
+进入"Configure Compile Options->Configure Excluded Modules", 选择db_mysql  
+进入"Configure Compile Options->Configure Install Prefix", 配置路径 /usr/local/   
+选择--->Save Changes 保存修改  
+按q返回  
+选择--->Compile And Install OpenSIPS  
+回车安装, 安装完成后退出整个menuconfig  
+安装完成后，应该生产如下的重要目录和文件, 若缺少则需要重新按步骤配置和编译安装
+```
+# 配置文件目录
+ls /usr/local/etc/opensips/
+opensips.cfg  opensipsctlrc  osipsconsolerc  scenario_callcenter.xml
+# 运行程序目录
+ls /usr/local/sbin
+opensips  opensipsctl  opensipsdbctl  opensipsunix  osipsconfig  osipsconsole
+```
+修改opensipsctlrc
+```
+cd /usr/local/etc/opensips/
+vi opensipsctlrc
+```
+修改成如下内容
+```
+# 修改后的配置
+# $Id$
+#
+# The OpenSIPS configuration file for the control tools.
+#
+# Here you can set variables used in the opensipsctl and opensipsdbctl setup
+# scripts. Per default all variables here are commented out, the control tools
+# will use their internal default values.
+## your SIP domain
+SIP_DOMAIN=192.168.0.191
+## chrooted directory
+# $CHROOT_DIR="/path/to/chrooted/directory"
+## database type: MYSQL, PGSQL, ORACLE, DB_BERKELEY, DBTEXT, or SQLITE
+## by default none is loaded
+# If you want to setup a database with opensipsdbctl, you must at least specify
+# this parameter.
+DBENGINE=MYSQL
+## database port (PostgreSQL=5432 default; MYSQL=3306 default)
+DBPORT=3306
+## database host
+DBHOST=localhost
+## database name (for ORACLE this is TNS name)
+DBNAME=opensips
+# database path used by dbtext, db_berkeley, or sqlite
+DB_PATH="/usr/local/etc/opensips/dbtext"
+## database read/write user
+DBRWUSER=opensips
+## password for database read/write user
+DBRWPW="opensipsrw"
+## engine type for the MySQL/MariaDB tabels (default InnoDB)
+MYSQL_ENGINE="MyISAM"
+## database super user (for ORACLE this is 'scheme-creator' user)
+DBROOTUSER="root"
+```
+这里主要是mysql连接信息，保证能正常连接即可。还有一个SIP_DOMAIN能连接到本服务的域名或者IP地址即可。  
+修改opensips.cfg 
+```
+vi opensips.cfg
+# 修改配置项
+listen=udp:192.168.0.191:5060 # CUSTOMIZE ME
+```
+创建数据库
+```
+cd /usr/local/sbin
+opensipsdbctl create
+```
+执行后是一堆的信息， 之后就是根据提示傻瓜操作创建数据库就好了。
+```
+nstall tables for 
+    b2b
+    cachedb_sql
+    call_center
+    carrierroute
+    cpl
+    domainpolicy
+    emergency
+    fraud_detection
+    freeswitch_scripting
+    imc
+    registrant
+    siptrace
+    userblacklist
+? (Y/n): y
+INFO: creating extra tables into opensips ...
+INFO: Extra tables successfully created.
+```
+这样就创建好数据库了。
+启动 opensips
+```
+opensipsctl start
+```
+启动后可以查看opensips进程
+```
+ps -aux | grep opensips
+```
+注册用户格式 opensipsctl 用户名 密码，
+```
+opensipsctl add 1001 1001    #前面的1001是用户名，后面的1001是密码
+opensipsctl add 1002 1002
+```
+到这里就成功的启动了服务并添加了两个用户（1001，1002）。  
+ [可以点击这个教程的最后测试步骤来测试通话](https://blog.csdn.net/qq_38631503/article/details/80005454)
