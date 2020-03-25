@@ -8,5 +8,5 @@
 1. [特殊字符集](https://unicode-table.com/cn/#cjk-unified-ideographs)  
 2. [在线 Markdown 编辑阅读器](https://www.zybuluo.com/)  
 2. [本地 Markdown 浏览器插件](MarkDown.md)  
-3. [Easy Mock后台假数据测试工具](https://github.com/hlwLianwei/docs/blob/master/Windows/部署说明.txt)
+3. [Easy Mock后台假数据测试工具](https://github.com/hlwLianwei/docs/blob/master/Windows/EasyMock.txt)
 
