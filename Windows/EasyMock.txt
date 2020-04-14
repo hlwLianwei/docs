@@ -25,6 +25,7 @@
 
 
 //mockjs 文档的github地址: https://github.com/nuysoft/Mock/wiki
+// Easy-Mock数据格式示例大全: https://www.cnblogs.com/coder-lzh/p/10795921.html
 
 let Mock = require('mockjs');
 let basicData = Mock.mock({
