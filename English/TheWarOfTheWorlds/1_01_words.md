@@ -41,3 +41,54 @@
 - envious ['enviəs] adj. 嫉妒的
 - disillusionment [ˌdɪsɪ'luːʒnmənt] n. 幻想破灭;醒悟；(灾难来临)
 
+- revolves [rɪˈvɒlvz] v. 围绕; revolve的第三人称单数
+- at a mean of 平均
+- barely ['beəli] adv. 几乎不；刚刚; 还达不到
+- nebular ['nebjʊlə] adj.星云的
+- hypothesis [haɪ'pɒθəsɪs] n. 假说；假设；猜测
+- ceased ['siːst] adj. 停止的；终了的; 动词cease的过去式
+- molten ['məʊltən] adj. 熔化的; melt的过去分词
+- volume ['vɒljuːm] n. 体积;卷；音量
+- accelerated [æk'seləreɪtɪd] adj. 加速的;v. 加速
+- vain [veɪn] adj. 自负的；
+- blind [blaɪnd]adj. 瞎的; 使失去判断力
+- vanity ['vænəti] n. 自负
+- expressed [ɪkˈsprest] v.提出过;表壳；n. 快车；快递
+- there far 远远的；indeed at all 确实如此
+- superficial [ˌsuːpə'fɪʃl]adj. 表面的
+- remoter [rɪˈməʊtə] 遥远的;emote的比较级
+- necessarily [ˌnesə'serəli] adv. 必然地；
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
