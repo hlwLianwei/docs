@@ -57,7 +57,7 @@ let basicData = Mock.mock({
     'list|1-100': [{
         'id|+1': 1,
         'isBoolean': '@boolean(10, 0, true)',//百分之百的true
-        'naturalNumber': '@natural(1, 1000)', //大于等于零的整数
+        'naturalNumber': '@natural(1, 50)', //1~50的随机整数
         'integer': '@integer(0)', //随机整数
         'float': '@float(1, 100, 3, 6)', //随机浮点数, 
         'character': '@character("upper")', //一个随机字符
@@ -83,7 +83,8 @@ let Date = Mock.mock({
         'time-format-3': '@time("HH:mm:ss")',
         'time-format-4': '@time("H:m:s")',
         'datetime': '@datetime("yyyy-MM-dd A HH:mm:ss")', //返回一个随机的日期和时间字符串
-        'dateNow': '@now("second")' //获取当前完整时间
+        'dateNow': '@now("second")', //获取当前完整时间
+        'dateNow1': '@now("yyyy-MM-dd")' //获取当前日期2020-01-01
     }]
 });
 // console.log(Date);
@@ -140,3 +141,35 @@ let address = Mock.mock({
     }]
 })
 console.log(address)
+
+自定义函数返回结果
+{
+  "Msg": "请求成功",
+  "Ret": 0,
+  "Data": {
+  "nextDate": function({
+        _req,
+      }) {
+        //时间格式化
+        Date.prototype.format = function(f) {
+          var y = this.getFullYear(),
+            m = this.getMonth() + 1,
+            d = this.getDate(),
+            h = this.getHours(),
+            t = this.getMinutes(),
+            s = this.getSeconds();
+          return f.replace(/yyyy/, y).replace(/MM/, m > 9 ? m : '0' + m).replace(/dd/, d > 9 ? d : '0' + d).replace(/hh/, h > 9 ? h : '0' + h).replace(/mm/, t > 9 ? t : '0' + t).replace(/ss/, s > 9 ? s : '0' + s);
+        };
+        var randomDay = Math.random() * 21 - 10; // -10~10的随机整数
+        var dt = new Date(); // 当前时间, _req.body.type为post接口请求的body带的type参数, 若是get请求则为_req.query.type
+        var nextDate = _req.body.type == "1" ? dt.setDate(dt.getDate() + 0) : (_req.body.type == "3" ? dt.setDate(dt.getDate() + 2) : (_req.body.type == "7" ? dt.setDate(dt.getDate() + 6) : dt.setDate(dt.getDate() + randomDay)));
+        dt = new Date(nextDate)
+        return dt.format('yyyy-MM-dd');
+      },
+      "tips": function() {
+        var tips = '已延期';
+        // 判断日期是否小于某个日期, nextDate为前面自定义的字段，this.xxx表示访问与它同级的属性；
+        return this.nextDate < '2020-12-29' ? tips : '';
+      }
+  }
+}
