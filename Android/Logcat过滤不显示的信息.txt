@@ -1,0 +1,7 @@
+在过滤器那里编辑Logcat Fileter,新增一个“不需要显示”的filter，在LogTag那里输入:
+^(?!.*(cmd|GnssLocationProvider|ngs.android.po|PushService|MiuiChargeController|BatteryInfoReceiver|KeyguardUpdateMonitor|CompatibilityInfo|ActivityManager|TeaLog|MiuiChargeManager|KeyguardIndication|ui.cloudservic|UidAppBatteryStatsImpl|BatteryExternalStatsWorker|tftp_server|NetworkController.MobileSignalController)).*$
+
+这个正则表示式，添加多个用“|”分割，只添加一个则不需要“|”，示例:
+ 示例不显示AudioFlinger和SurfaceView,：
+   ^(?!.*(AudioFlinger|SurfaceView)).*$
+   ^(?!.*(SurfaceView)).*$
