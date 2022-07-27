@@ -1,0 +1,65 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>flex布局自动换行并解决最后一行两侧对齐</title>
+    <style type="text/css">
+        .container {
+            width: 100%;
+            border: 1px solid #ddd;
+            display: flex;
+			flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content: baseline;
+			background-color: #e5e5e5;
+        }
+
+        .item {
+            border: 1px solid red;
+            height: 100px;
+            width: 200px;
+            padding: 0 10px;
+			margin: 8px 8px;
+        }
+
+        .item.fill {		
+            height: 1px;
+            visibility: hidden;            
+			margin: -100px 8px !important; // -100px 是为了消除填充对象在父窗口底部积压的间隔
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="item">01</div>
+        <div class="item">02</div>
+        <div class="item">03</div>
+        <div class="item">04</div>
+        <div class="item">05</div>
+        <div class="item">06</div>
+        <div class="item">07</div>
+		<!-- 以下为空白填充对象 -->
+		<!-- 填充个数以屏幕宽度除item.width得到的最大值为准, 如宽度为1920, item.width为200, 则1920/200=9.6约为10个 -->
+        <div class="item fill">fill 01</div>
+		<div class="item fill">fill 02</div>
+		<div class="item fill">fill 03</div>
+		<div class="item fill">fill 04</div>
+		<div class="item fill">fill 05</div>
+		<div class="item fill">fill 06</div>
+		<div class="item fill">fill 07</div>
+		<div class="item fill">fill 08</div>
+		<div class="item fill">fill 09</div>
+		<div class="item fill">fill 10</div>
+    </div>
+	
+    <script type="text/javascript">
+	//alert('屏幕分辨率为：' + window.screen.width  + '*'  + window.screen.height);
+	</script>
+
+</body>
+
+</html>
