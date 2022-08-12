@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>position定位</title>
+    <style type="text/css">
+	body{
+	margin: 0;
+	background-color: #5F9EA0;
+	}
+    </style>
+</head>
+
+<!-- position: absolute, fixed, relative, static, inherit -->
+<!-- absolute:生成绝对定位的元素，相对于 static 定位以外的第一个父元素(这个父元素有absolute, fixed, relative)进行定位。 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 -->
+<!--          即从它往上推的父元素，不一定是直接父元素，可能是根body元素 -->
+<!-- fixed: 生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 -->
+<!-- relative: 生成相对定位的元素，相对于它本身正常位置进行再定位。因此，"margin-left:6; left:40" 会向元素的 LEFT 位置添加 40 像素, 真实偏距=6+40=46。-->
+<!--           "margin-top:6; top:40", 真实偏距=6+40=46, 注意：在竖直方向上，若它的子元素有"margin-top:10", 则子元素不会偏反而是它变成偏距=10+40=40, margin-top:6会失效 -->
+<!-- static: 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。 -->
+<!-- inherit: 规定应该从父元素继承 position 属性的值。 -->
+<body>
+    <div style="width:560px; height: 1px;background-color: red">
+	</div>
+    <div id="leve-1">
+	   <div id="leve-2" style="margin-left:6px; margin-top:6px; position: relative; left:40px; top:40px; height: 300px; background-color: green">
+	     <div id="leve-3-1" style="margin-left:10px; margin-top:10px; width:560px; height:150px; background-color: red">
+		   红框样式：margin-top:10px; margin-left:10px; width:560px; height:150px;<br/>
+		   注意：当前绿框的margin-top:6px失效，被框的margin-top:10px取代;
+		 <div id="leve-3-2" style="position: absolute; left:40px; top:40px; height: 60px; background-color: #ffeeff">
+		   这个框的样式:position: absolute; left:40px; top:40px; height: 60px;<br/>
+		   它相对于绿框定位, 而不是红框
+		 </div>
+		 </div>		 
+		   绿框样式: margin-left:6px; margin-top:6px; position: relative; left:40px; top:40px; height: 300px; <br/>
+		   它的定位relative，虽然进行了偏移，但其他的兄弟元素还是按照绿框原始的位置(没有top:40的部分)进行排位 <br/>
+		   因此蓝框与绿框部分重合
+	   </div>
+	   <div id="leve-2-2" style="top:20px; margin-left:10px; width:560px; height:100px; color: red; background-color: blue">
+	     <br/><br/>
+	     蓝框的定位还是以绿框原始的位置进行定位
+	   </div>
+    </div>
+	
+    <script type="text/javascript">
+	//alert('屏幕分辨率为：' + window.screen.width  + '*'  + window.screen.height);
+	</script>
+
+</body>
+
+</html>
