@@ -3,3 +3,4 @@
 [项目移动端配置布局方式](https://github.com/hlwLianwei/docs/blob/master/H5/项目移动端配置布局方式.txt)  
 [资源文件存放位置说明](https://github.com/hlwLianwei/docs/blob/master/H5/资源文件存放位置说明.txt)  
 [css-flex样式说明](https://github.com/hlwLianwei/docs/blob/master/H5/css-flex样式.md)  
+[基于uniapp的微信小程序商城项目](https://www.escook.cn/docs-uni-shop/)  
